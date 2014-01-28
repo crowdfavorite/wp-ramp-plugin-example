@@ -1,11 +1,20 @@
 <?php
 /*
-Plugin Name: RAMP plugin example
-Description: Crowd Favorite RAMP plugin plugin example
+Plugin Name: RAMP Plugin Example
+Description: Crowd Favorite RAMP plugin example.  Transfers the email address from the General Settings page, but refuses to transfer it if there is anything else in the batch.
 Author: Crowd Favorite
 Version: 1.0
 Author URI: http://crowdfavorite.com/
 */
+
+/**
+ * This plugin is not particularly useful in its own right; the admin
+ * notification email address does not frequently change, and the plugin
+ * requires that it be the only thing sent in a batch if it is to be sent.
+ * However, the code does exercise a significant portion of the RAMP plugin
+ * functionality, and should serve as a reasonable base for developing a more
+ * helpful plugin.
+ **/
 
 /**
  * Action to register the callbacks; must be called at cfd_admin_init
@@ -18,10 +27,17 @@ function rpe_register_deploy_callbacks() {
 
 add_action('cfd_admin_init', 'rpe_register_deploy_callbacks');
 	
+/**
+ * RAMP plugins are generally built as classes, although there is no current
+ * requiremnt as such; the plugin system depends on registration of a number of
+ * callback hooks.
+ **/
 class rpe_deploy_callbacks {
-	// The name is used to generate the callback ID in RAMP.  Using a 
-	// translated name may result in problems if the production and staging 
-	// servers have different languages set.
+	/**
+	 * The name is used to generate the callback ID in RAMP.  Using a
+	 * translated name may result in problems if the production and staging
+	 * servers have different languages set.
+	 **/
 	protected $name = 'RAMP Plugin Example';
 	protected $description = '';
 	
