@@ -14,4 +14,8 @@ This plugin is not particularly useful in its own right; the admin notification 
 
 This plugin requires [RAMP](http://crowdfavorite.com/wordpress/ramp/) to function.
 
-Upload it to the plugins directory and activate it through the Plugins menu.
+Upload it to the plugins directory (on both the source and destination RAMP servers) and activate it through the Plugins menu.
+
+== Use ==
+
+To see the plugin in action, assuming RAMP is already set up and working, make a change to the email address on the General Settings screen on the source (staging) server, then create a new RAMP batch.  At the bottom of the batch, in the Extras setting, the "RAMP Plugin Example" row should have a checkbox; ensure that this box is checked (and that no other checkboxes are checked).  Click Pre-flight Check, then Send Batch; once the batch is complete, the email address on the General Settings screen on the destination (production) server should now match the change made on the source server.
